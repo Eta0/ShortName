@@ -6,6 +6,7 @@ on Windows, with no dependencies.
 
 ## Table of Contents
 
+- [What Is This?](#what-is-this)
 - [Setup](#setup)
   - [Optional Installation](#optional-installation)
 - [Usage](#usage)
