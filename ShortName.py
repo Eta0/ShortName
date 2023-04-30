@@ -59,24 +59,30 @@ def main():
 
 class WinFile:
     # Win32 constants
-    GENERIC_ALL = 1 << 28
+    DELETE = 0x00010000
     FILE_SHARE_DELETE, FILE_SHARE_WRITE, FILE_SHARE_READ = 0x4, 0x2, 0x1
     NULL = 0
     OPEN_EXISTING = 3
-    FILE_ATTRIBUTE_NORMAL = 0x80
+    FILE_FLAG_BACKUP_SEMANTICS = 0x02000000
     INVALID_HANDLE = -1
     MAX_PATH = 260
 
     def __init__(
         self,
         lpFileName: str,
-        dwDesiredAccess=GENERIC_ALL,  # GENERIC_ALL is required for SetFileShortName
+        dwDesiredAccess=DELETE,
         dwShareMode=FILE_SHARE_DELETE | FILE_SHARE_WRITE | FILE_SHARE_READ,
         lpSecurityAttributes=NULL,
         dwCreationDisposition=OPEN_EXISTING,
-        dwFlagsAndAttributes=FILE_ATTRIBUTE_NORMAL,
+        dwFlagsAndAttributes=FILE_FLAG_BACKUP_SEMANTICS,
         hTemplateFile=NULL,
     ):
+        # To change the short name of a file later, it must be opened with either:
+        # 1. dwDesiredAccess=GENERIC_ALL, or
+        # 2. dwDesiredAccess=DELETE and dwFlagsAndAttributes=FILE_FLAG_BACKUP_SEMANTICS
+        # FILE_FLAG_BACKUP_SEMANTICS is necessary for opening directories anyway,
+        # so this defaults to the latter option.
+
         # https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew
         self.handle = ctypes.windll.kernel32.CreateFileW(
             self.get_long_path(lpFileName),
