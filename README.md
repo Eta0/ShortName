@@ -8,6 +8,7 @@ on Windows, with no dependencies.
 
 - [What Is This?](#what-is-this)
 - [Setup](#setup)
+  - [As a Script](#as-a-script)
   - [Optional Installation](#optional-installation)
 - [Usage](#usage)
   - [View the Short Name of a File](#view-the-short-name-of-a-file)
@@ -37,11 +38,16 @@ you can now refer to it almost everywhere as `C:\Files\short.txt` as well;
 
 ## Setup
 
-1. Install [Python 3](https://www.python.org/downloads/), if you don't have it
-2. [Download `ShortName.py`](https://raw.githubusercontent.com/Eta0/ShortName/main/ShortName.py)
+You can run ShortName either as a single-file script `ShortName.py`,
+or install it to run it more easily from anywhere.
 
-Installing ShortName itself is not necessary, as it has no dependencies.
-You can use it immediately as a script, e.g.:
+Regardless of the method, you first need to [install Python 3](https://www.python.org/downloads/) if you don't have it.
+
+### As a Script
+
+- [Download `ShortName.py`](https://raw.githubusercontent.com/Eta0/ShortName/main/ShortName.py)
+
+No further installation is required, as it has no dependencies. You can use it immediately as a script, e.g.:
 
 ```cmd
 python ShortName.py get .\some_long_file_name.txt
@@ -49,15 +55,23 @@ python ShortName.py get .\some_long_file_name.txt
 
 ### Optional Installation
 
-If you wish to install ShortName anyway—for example, to invoke it from anywhere—you can:
+If you wish to install ShortName—for example, to invoke it from anywhere—you can run:
+
+```cmd
+python -m pip install ShortName
+```
+To install [ShortName via PyPI](https://pypi.org/project/ShortName/1.0.0).
+
+Alternatively, you can:
 
 1. [Download the ShortName repository](https://github.com/Eta0/ShortName/archive/refs/heads/main.zip)
 2. Unzip it
 3. Run `python -m pip install <path to unzipped directory>`
 
-Then you should be able to invoke `ShortName` from anywhere, in either of the following two ways:
+Regardless of which of installation method you choose, you should then be able to invoke `ShortName` from anywhere,
+in either of the following two ways:
 
-1. `python -m ShortName get .\some_long_file_name.txt`
+1. `python -m ShortName get .\some_long_file_name.txt`, or
 2. `ShortName get .\some_long_file_name.txt`
 
 To uninstall it, run:
