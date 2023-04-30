@@ -60,7 +60,7 @@ If you wish to install ShortName—for example, to invoke it from anywhere—you
 ```cmd
 python -m pip install ShortName
 ```
-To install [ShortName via PyPI](https://pypi.org/project/ShortName/1.0.0).
+To install [ShortName via PyPI](https://pypi.org/project/ShortName).
 
 Alternatively, you can:
 
